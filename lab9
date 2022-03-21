@@ -1,0 +1,48 @@
+#include <time.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+int sum3(int a1, int b1, int c1)
+{
+    if (a1 > b1 && a1 > c1) return a1;
+    else if (b1 > a1 && b1 > c1) return b1;
+    else return c1;
+}
+
+int main()
+{
+    srand(time(NULL));
+    FILE *NameA, *NameB, *NameC, *NameD;
+    int i, a = 1, c = 2, b = 3;
+    NameA = fopen("NameA.txt", "w");
+    NameB = fopen("NameB.txt", "w");
+    NameC = fopen("NameC.txt", "w");
+    for (i = 0; i < 100; i++)
+    {
+        fprintf(NameA, "%d ", rand() % 999);
+        fprintf(NameB, "%d ", rand() % 999);
+        fprintf(NameC, "%d ", rand() % 999);
+    }
+    fclose(NameA);
+    fclose(NameB);
+    fclose(NameC);
+    NameA = fopen("NameA.txt", "r+");
+    NameB = fopen("NameB.txt", "r+");
+    NameC = fopen("NameC.txt", "r+");
+    NameD = fopen("NameD.txt", "w");
+    for (i = 0; i < 100; i++)
+    {
+        fscanf(NameA, "%d", &a);
+        fscanf(NameB, "%d", &b);
+        fscanf(NameC, "%d", &c);
+        fprintf(NameD, " (%d;%d;%d) = %d",a, b, c, sum3(a, b, c));
+        
+    }
+    
+    fclose(NameD);
+    fclose(NameA);
+    fclose(NameB);
+    fclose(NameC);
+
+    return 0;
+}
