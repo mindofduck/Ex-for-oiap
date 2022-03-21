@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+// Задание 9
+
+int main()
+{
+    char str[31], ch;
+    int i, j;
+    printf("Vvedite predlojenie\n");
+    gets(str);
+    for (i = 0; i < 31; i++)
+    {
+        if (str[0] == ' ')
+            for (j = 0; j < 31; j++)
+                {
+                    ch = str[j];
+                    str[j] = str[j+1];
+                    str[j+1] = ch;
+                }
+    }
+    for (i = 0; i < 31; i++)
+    {
+        if (str[i] == ' ' && str[i+1] == ' ')
+            for (j = i; j < 31; j++)
+            {
+                ch = str[j];
+                str[j] = str[j+1];
+                str[j+1] = ch;
+            }
+    }
+    printf("%s", str);
+    
+    return 0;
+}
