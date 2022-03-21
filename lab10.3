@@ -1,0 +1,22 @@
+#include <string.h>
+#include <stdio.h>
+
+// Задание 5
+
+int main()
+{
+    char fName[80];
+    int i;
+    printf("Введите имя файла\n");
+    gets ( fName );
+    i = 0;
+    while ( fName[i] != '.' )
+    {
+        if ( fName[i] == '\0' ) break;
+        i ++;
+    }
+    if ( fName[i] == '.' ) strcpy ( fName+i,".exe" );
+    else strcat ( fName,".exe" );
+    puts ( "Результат:" );
+    puts ( fName );
+}
